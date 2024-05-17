@@ -1,0 +1,104 @@
+<div class="container mt-5">
+  <div class="card text-center">
+    <div class="card-header bg-primary text-white">
+      <div class="row align-items-center">
+        <div class="col text-end">
+          <img width="60" src="assets/images/logo2.png" alt>
+          <h3 style="margin-bottom: 10px" class="mb-4">
+            المجله
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="CardForm" (submit)="addProject()" class="needs-validation" novalidate>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="title">اسم المجله</label>
+              <input type="text" class="form-control" id="title" formControlName="title" required>
+              <div class="invalid-feedback">
+                Please provide a magazine title.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="description">وصف المجله</label>
+              <textarea class="form-control" id="description" formControlName="description" required></textarea>
+              <div class="invalid-feedback">
+                Please provide a magazine description.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="form-group border rounded p-3">
+              <label for="file">الملف</label>
+              <input (change)="handleFileInput($event)" type="file" class="form-control border-0" id="file_demo"
+                formControlName="file_demo" required>
+              <div class="invalid-feedback">
+                Please upload a magazine file.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="title">الكاتب</label>
+              <input type="text" class="form-control" id="auther" formControlName="auther" required>
+              <div class="invalid-feedback">
+                Please provide a magazine title.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" style="margin-bottom: 20px" class="btn btn-success">
+          اضافة مقاله
+        </button>
+      </form>
+    </div>
+    <div style="margin: -15px" class="container mt-5">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">
+              اسم المجله
+            </th>
+            <th class="text-center" scope="col">
+              وصف المجله
+            </th>
+            <th class="text-center" scope="col">
+              الناشر
+            </th>
+            <th class="text-center" scope="col">
+              الملف
+            </th>
+            <th class="text-center" style="width: 10%">
+              حذف
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let card of cards">
+            <td>{{ card.title }}</td>
+            <td>
+              {{ card.description }}
+            </td>
+            <td>{{ card.auther }}</td>
+            <td>
+              <a href="{{card.file_demo}}">PDF</a>
+            </td>
+            <td>
+              <button (click)="deleteproject(card.id)" class="btn btn-danger">
+                حذف
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

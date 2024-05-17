@@ -1,0 +1,75 @@
+<div class="container mt-5">
+  <div class="card text-center">
+      <div class="card-header bg-primary text-white">
+          <div class="row align-items-center">
+              <div class="col text-end">
+                  <img width="60" src="assets/images/logo2.png" alt="">
+                  <h3 style="margin-bottom: 10px;" class="mb-4">الفاعليات</h3>
+              </div>
+          </div>
+      </div>
+      <div class="card-body">
+          <form [formGroup]="ActivityForm" (submit)="addProject()" class="needs-validation" novalidate>
+              <div class="row mb-3">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="title">اسم الفاعليه </label>
+                          <input type="text" class="form-control" id="title" formControlName="title" required>
+                          <div class="invalid-feedback">Please provide a activity title.</div>
+                      </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="description">وصف الفاعليه</label>
+                          <textarea class="form-control" id="description" formControlName="description"
+                              required></textarea>
+                          <div class="invalid-feedback">Please provide a activitiy description.</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col-md-12">
+                      <div class="form-group border rounded p-3">
+                          <label for="file_demo">صورة  </label>
+                          <input type="file" class="form-control border-0" id="file_demo" (change)="handleFileInput($event)" formControlName="file_demo"
+                               required>
+                          <div class="invalid-feedback">Please upload a activity file.</div>
+                      </div>
+                  </div>
+
+              </div>
+
+
+              <button type="submit" style="margin-bottom: 20px;" class="btn btn-success">اضافة الفاعليه</button>
+          </form>
+      </div>
+      <div style="margin: -15px;" class="container mt-5">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="text-center"scope="col">اسم الفاعليه</th>
+                <th class="text-center"scope="col">وصف الفاعليه</th>
+                <th class="text-center"scope="col">صوره الفاعليه</th>
+                 <th class="text-center" style="width: 10%;">حذف</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let project of activies">
+                <td>{{ project.title }}</td>
+                <td>{{ project.description }}</td>
+                <td>
+                <img src="{{ project.file_demo }}" alt="">
+                </td>
+                <td><button (click)="deleteproject(project.id)"  class="btn btn-danger">حذف</button></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  </div>
+
+
+</div>
+

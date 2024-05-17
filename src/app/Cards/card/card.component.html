@@ -1,0 +1,18 @@
+<!-- magazine.component.html -->
+<div class="container d-flex  justify-content-around">
+  <div *ngFor="let mag of cards " class="card col-lg-5 py-4 ">
+    <div class="card-body">
+      <h5 class="card-title" dir="rtl">{{ mag.title }}</h5>
+      <hr>
+      <h5 dir="rtl">اسم الناشر: {{ mag.auther }}</h5>
+      <hr>
+      <p class="card-text" dir="rtl">{{ mag.description }}</p>
+      <hr>
+      <a href="{{  mag.file_demo }}" class="card-link bi bi-file-earmark-pdf" dir="rtl">PDF</a>
+
+      <button (click)="deleteMagazine(mag.id)" class="btn btn-danger" dir="rtl">Delete</button>
+    </div>
+  </div>
+
+</div>
+
